@@ -1,1 +1,1 @@
-# hobby_tracker-maui
+# Hobby Tracker MAUI

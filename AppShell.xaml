@@ -4,12 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:HobbyTracker"
+    xmlns:views="clr-namespace:HobbyTracker.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="HobbyTracker">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate views:HobbyListView}"
+        Route="HobbyListView" />
 
 </Shell>

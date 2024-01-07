@@ -1,41 +1,99 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="HobbyTracker.Views.HobbyListView"
              Title="HobbyListView">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Header -->
+            <RowDefinition Height="40"/>
+            <!-- Content -->
+            <RowDefinition Height="*"/>
+            <!-- Footer -->
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
 
-            <ListView x:Name="listView">
-                <ListView.ItemTemplate>
+        <!-- Header -->
+        <Grid
+            Grid.Row="0" 
+            BackgroundColor="White"
+            Padding="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="38"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="38"/>
+            </Grid.ColumnDefinitions>
+
+            <ImageButton 
+                Source="pie.png"
+                Grid.Column="0"
+                x:Name="AnalyticsButton"
+                Clicked="AnalyticsButton_Clicked"
+                Padding="2,2,8,8">
+
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="Black"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <ImageButton 
+                Source="gear.png"
+                Grid.Column="2"
+                x:Name="OptionsButton"
+                Clicked="OptionsButton_Clicked"
+                Padding="2,2,8,8">
+
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="Black"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
+        </Grid>
+
+        <!-- Content -->
+        <ScrollView 
+            Grid.Row="1"
+            Background="WhiteSmoke"
+            Padding="0,20,0,20">
+            <CollectionView
+                x:Name="listView">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        Orientation="Vertical"
+                        ItemSpacing="0"/>
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="1"
-                           Text="{Binding Name}"
-                           FontAttributes="Bold" />
-                                <Label Grid.Row="1"
-                           Grid.Column="1"
-                           Text="{Binding ColorHex}"
-                           FontAttributes="Italic"
-                           VerticalOptions="End" />
-                            </Grid>
-                        </ViewCell>
+                        <Grid
+                            BackgroundColor="{Binding BgColor}"
+                            Padding="10">
+                            <Label 
+                                Grid.Column="0"
+                                Text="{Binding Name}"
+                                TextColor="{Binding TextColor}"/>
+                            <Label 
+                                HorizontalOptions="End"
+                                Grid.Column="1"
+                                Text="{Binding PracticeInfo}"
+                                TextColor="{Binding TextColor}"/>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </VerticalStackLayout>
-    </ScrollView>
-    
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <!-- Footer -->
+        <Image Grid.Row="2" BackgroundColor="White"/>
+        <Button
+            HeightRequest="38"
+            Padding="100,0,100,0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Grid.Row="2"
+            x:Name="AddButton"
+            Text="Add" 
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="AddButton_Clicked"/>
+    </Grid>
 </ContentPage>

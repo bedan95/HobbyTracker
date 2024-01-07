@@ -19,22 +19,40 @@ public partial class HobbyListView : ContentPage
             {
                 Name = "Drawing",
                 ColorHex = "aa0000",
-                RecentSessionsCount = 7,
-                DaysSinceLastSession = 1,
+                PracticeInfo = "7x | 1d",
             },
             new HobbyViewModel()
             {
                 Name = "Guitar",
                 ColorHex = "00aa00",
-                RecentSessionsCount = 3,
-                DaysSinceLastSession = 2,
+                PracticeInfo = "3x | 2d",
             },
             new HobbyViewModel()
             {
                 Name = "Programming",
                 ColorHex = "0000aa",
-                RecentSessionsCount = 1,
-                DaysSinceLastSession = 0,
+                PracticeInfo = "1x | 0d",
+            },
+            new HobbyViewModel()
+            {
+                Name = "Workout",
+                ColorHex = "ff55aa",
+                PracticeInfo = "0x | 0d",
             },
         };
+
+    private void AddButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void AnalyticsButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void OptionsButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
